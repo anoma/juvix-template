@@ -1,0 +1,8 @@
+name: Juvix project
+version: 0.0.1
+dependencies: 
+  [
+    deps/stdlib,
+    # deps/containers,
+    # deps/test,
+  ]

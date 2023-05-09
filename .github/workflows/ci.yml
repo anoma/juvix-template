@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+  schedule:
+    - cron: '0 3 * * 1'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: Download latest nightly Juvix binary
+        uses: jaxxstorm/action-install-gh-release@v1.9.0
+        with:
+          repo: anoma/juvix-nightly-builds
+          cache: enable
+
+      - name: Run tests
+        run: |
+          make test
+ 
+      - name : Typecheck library code
+        run : make check
+
+      - name: HTML
+        run: make html
+
+      - name: test
+        run: make test
+
+      - if: github.event.pull_request.merged == true
+        name: Deploy HTML to github pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs
+          enable_jekyll: false

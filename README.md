@@ -1,1 +1,1 @@
-# juvix-template
+# Juvix Package
