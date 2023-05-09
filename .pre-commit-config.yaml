@@ -23,7 +23,7 @@ repos:
     rev: v3.0.0-alpha.6
     hooks:
       - id: prettier
-        types_or: [ markdown, yaml]
+        types_or: [markdown, yaml]
 
   - repo: local
     hooks:

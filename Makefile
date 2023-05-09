@@ -23,7 +23,7 @@ CHECKED = $(patsubst $(SRCDIR)/%.juvix,$(CHECKEDDIR)/$(SRCDIR)/%.juvix,$(SOURCES
 
 # ------------------------------------------------------------------------------
 
-all: typecheck compile
+all: compile
 
 # ------------------------------------------------------------------------------
 
@@ -86,16 +86,18 @@ typecheck: deps $(CHECKED)
 $(SRCDIR)/%.juvix: deps
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.juvix
-		@mkdir -p $(@D)
-		@$(JUVIXBIN) compile $< -o $@
+	@mkdir -p $(@D)
+	@$(JUVIXBIN) compile $< -o $@
 
 $(CHECKEDDIR)/$(SRCDIR)/%.juvix: $(SRCDIR)/%.juvix
 	@echo "Checking $<"
-	@echo "Moving $@" 
+	@echo "Moving $@"
 	@mkdir -p $(@D)
 	@$(JUVIXBIN) typecheck $< $(JUVIXTYPECHECKFLAGS) && \
 		cp $< $@ && \
 		juvix format $@ $(JUVIXFORMATFLAGS)
+
+# TODO: add HTML output
 
 # ------------------------------------------------------------------------------
 # Project maintenance

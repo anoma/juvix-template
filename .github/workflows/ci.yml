@@ -13,7 +13,7 @@ on:
       - synchronize
       - ready_for_review
   schedule:
-    - cron: '0 3 * * 1'
+    - cron: "0 3 * * 1"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -36,9 +36,9 @@ jobs:
       - name: Run tests
         run: |
           make test
- 
-      - name : Typecheck library code
-        run : make check
+
+      - name: Typecheck library code
+        run: make check
 
       - name: HTML
         run: make html
