@@ -1,5 +1,3 @@
 .juvix-build
 .history
-build/
-checked/
-deps/
+html/

@@ -1,7 +1,10 @@
 name: Juvix project
 version: 0.0.1
+tested-with: 0.3.3
+description: "asdf"
+main: App/Main.juvix
 dependencies: [
-    deps/stdlib,
+    ".juvix-build/stdlib"
     # deps/containers,
     # deps/test,
   ]

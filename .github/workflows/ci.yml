@@ -33,23 +33,10 @@ jobs:
           repo: anoma/juvix-nightly-builds
           cache: enable
 
-      - name: Run tests
+      - name: typecheck
         run: |
-          make test
+          juvix typecheck
 
-      - name: Typecheck library code
-        run: make check
-
-      - name: HTML
-        run: make html
-
-      - name: test
-        run: make test
-
-      - if: github.event.pull_request.merged == true
-        name: Deploy HTML to github pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs
-          enable_jekyll: false
+      - name: Compile
+        run: |
+          juvix compile
