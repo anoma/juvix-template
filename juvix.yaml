@@ -1,0 +1,10 @@
+name: Your project name here
+version: 0.0.1
+tested-with: 0.3.3
+description: "Your project description here."
+main: App/Main.juvix
+dependencies: [
+    ".juvix-build/stdlib"
+    # deps/containers,
+    # deps/test,
+  ]
