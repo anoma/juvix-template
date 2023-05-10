@@ -29,14 +29,14 @@ repos:
     hooks:
       - id: format
         name: format Juvix sources
-        entry: make -s format
+        entry: juvix format
         language: system
         verbose: false
         pass_filenames: false
 
       - id: typecheck
         name: typecheck Juvix examples
-        entry: make -s typecheck
+        entry: juvix typecheck
         language: system
         verbose: false
         pass_filenames: false

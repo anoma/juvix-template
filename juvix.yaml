@@ -1,7 +1,7 @@
-name: Juvix project
+name: Your project name here
 version: 0.0.1
 tested-with: 0.3.3
-description: "asdf"
+description: "Your project description here."
 main: App/Main.juvix
 dependencies: [
     ".juvix-build/stdlib"
